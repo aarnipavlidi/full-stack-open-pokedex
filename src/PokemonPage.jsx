@@ -32,7 +32,14 @@ const PokemonPage = ({ previous, next }) => {
       <div className="links">
         {previous && <Link to={`/pokemon/${previous.name}`}>Previous</Link>}
         <Link to="/">Home</Link>
-        {next && <Link to={`/pokemon/${previous.name}`}>Next</Link>}
+        // Reason why test is failing, is because when user is clicking "next"
+        // pokemon link, app is redirecting user actually for previous pokemon.
+        // Because task is telling us not to change code for the test, I had
+        // to open the app (npm start) and check what was causing the issue.
+        // So if we go to "Eevee" (test is doing the same thing) pokemon and 
+        // pressed next pokemon link, app redirected us actually to "Ditto"
+        // (prev. pokemon) and then I knew instantly what caused the problem! :)
+        {next && <Link to={`/pokemon/${next.name}`}>Next</Link>}
       </div>
       <div className={`pokemon-page pokemon-type-${type.name}`}>
         <div className="pokemon-image" style={{ backgroundImage: `url(${pokemon.sprites.front_default})` }} />
