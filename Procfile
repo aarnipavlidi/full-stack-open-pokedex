@@ -1,1 +1,1 @@
-web: npm run aarni
+web: npm run start-prod
