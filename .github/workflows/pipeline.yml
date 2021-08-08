@@ -27,12 +27,12 @@ jobs:
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: 'http://localhost:5000'
-      - uses: akhileshns/heroku-deploy@v3.12.12
+      - name: Deploy to heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "polar-lake-13037"
           heroku_email: "me@aarnipavlidi.fi"
           healthcheck: "https://polar-lake-13037.herokuapp.com/health"
           checkstring: "ok"
-          delay: 5
           rollbackonhealthcheckfailed: true
