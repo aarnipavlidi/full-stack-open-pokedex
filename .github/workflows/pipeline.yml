@@ -55,16 +55,16 @@ jobs:
           custom_payload: |
             {
               attachments: [{
-                color: '${{ job.status }}' === 'success' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
+                color: '${{ job.status }}' === 'success' && ${process.env.AS_EVENT_NAME} == 'pull_request'
                   ? 'good'
-                  : '${{ job.status }}' === 'failure' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
+                  : '${{ job.status }}' === 'failure' && ${process.env.AS_EVENT_NAME} == 'pull_request'
                   ? 'danger'
                   : 'warning',
-                text: '${{ job.status }}' === 'success' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
-                  ? `current event name: ${process.env.AS_EVENT_NAME}`
+                text: '${{ job.status }}' === 'success' && ${process.env.AS_EVENT_NAME} == 'pull_request'
+                  ? `green color`
                   : '${{ job.status }}' === 'failure' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
-                  ? `current event name: ${process.env.AS_EVENT_NAME}`
-                  : `current event name: ${process.env.AS_EVENT_NAME}`
+                  ? `red color`
+                  : `orange color`
                 }]
               }
         env:
