@@ -56,7 +56,7 @@ jobs:
             {
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                text: '${{ job.status }}' === 'success' && '${ process.env.AS_EVENT_NAME }' == 'push' ? testi : testing
+                text: '${{ job.status }}' === 'success' && '${ process.env.AS_EVENT_NAME }' == 'push' ? `testi` : `aarni`
               }]
             }
         env:
