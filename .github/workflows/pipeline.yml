@@ -55,10 +55,10 @@ jobs:
           custom_payload: |
             {
               attachments: [{
-                color: '${{ job.status }}' === 'success' && '${process.env.AS_EVENT_NAME}' == 'push'
-                  ? 'good'
-                text: '${{ job.status }}' === 'success' && '${process.env.AS_EVENT_NAME}' == 'push'
-                  ? `New version has been deployed to https://polar-lake-13037.herokuapp.com/ (${process.env.AS_COMMIT}) by ${process.env.AS_AUTHOR} and build took total of ${process.env.AS_TOOK}.`
+                color: '${{ job.status }}' === 'success' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
+                  ? 'good',
+                text: '${{ job.status }}' === 'success' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
+                  ? `testing more stuff.`
                 }]
               }
         env:
