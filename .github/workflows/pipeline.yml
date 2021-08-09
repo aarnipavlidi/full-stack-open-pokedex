@@ -61,10 +61,10 @@ jobs:
                   ? 'danger'
                   : 'warning',
                 text: '${{ job.status }}' === 'success' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
-                  ? `should have green color.`
+                  ? `current event name: ${process.env.AS_EVENT_NAME}`
                   : '${{ job.status }}' === 'failure' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
-                  ? `should have red color.`
-                  : `should have orange color.`
+                  ? `current event name: ${process.env.AS_EVENT_NAME}`
+                  : `current event name: ${process.env.AS_EVENT_NAME}`
                 }]
               }
         env:
