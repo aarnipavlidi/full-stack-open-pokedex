@@ -56,15 +56,15 @@ jobs:
             {
               attachments: [{
                 color: '${{ job.status }}' === 'success' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
-                  ? 'good',
+                  ? 'good'
                   : '${{ job.status }}' === 'failure' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
                   ? 'danger'
                   : 'warning',
                 text: '${{ job.status }}' === 'success' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
                   ? `should have green color.`
                   : '${{ job.status }}' === 'failure' && '${process.env.AS_EVENT_NAME}' == 'pull_request'
-                  ? `should have red color`
-                  : `should have red orange`
+                  ? `should have red color.`
+                  : `should have orange color.`
                 }]
               }
         env:
