@@ -23,8 +23,8 @@ jobs:
       - name: build
         run: npm run build
       - name: test
-        if: ${{ failure() }}
         run: npm run test
+        if: ${{ failure() }}
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
@@ -61,7 +61,7 @@ jobs:
                   ? 'danger'
                   : '${{ job.status }}' === 'success' && `${process.env.AS_EVENT_NAME}` == 'pull_request'
                   ? 'good'
-                  : 'danger'
+                  : 'danger',
                 text: '${{ job.status }}' === 'success' && `${process.env.AS_EVENT_NAME}` == 'push'
                   ? `New version has been deployed to https://polar-lake-13037.herokuapp.com/ (${process.env.AS_COMMIT}) by ${process.env.AS_AUTHOR} and build took total of ${process.env.AS_TOOK}.`
                   : '${{ job.status }}' === 'failure' && `${process.env.AS_EVENT_NAME}` == 'push'
