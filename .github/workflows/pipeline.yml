@@ -21,6 +21,7 @@ jobs:
       - name: lint
         run: npm run eslint
       - name: build
+        if: ${{ success() }}
         run: npm run build
       - name: test
         run: npm run test
@@ -37,7 +38,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: "patch"
       - name: Deploy to Heroku
-        if: github.event_name == 'push' && !contains(github.event.commits.*.message, '#skip')
+        if: github.event_name == 'push' && !contains(github.event.commits.*.message, '#skip') && success()
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
@@ -46,3 +47,10 @@ jobs:
           healthcheck: "https://polar-lake-13037.herokuapp.com/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
+      - name: action-slack
+        uses: 8398a7/action-slack@v3.9.2
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
