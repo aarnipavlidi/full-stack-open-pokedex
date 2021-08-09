@@ -66,6 +66,6 @@ jobs:
                   ? `New version has not been deployed (${process.env.AS_COMMIT}), because there was problem with building project by\n ${process.env.AS_AUTHOR}. Build took total of ${process.env.AS_TOOK}.`
                 }]
               }
-          env:
-            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
