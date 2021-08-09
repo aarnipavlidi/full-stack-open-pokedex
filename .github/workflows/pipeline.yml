@@ -56,7 +56,7 @@ jobs:
             {
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                text: '${{ job.status }}' === 'success'
+                text: '${{ job.status }}' === 'success' && github.event_name == 'push'
                 ? `New version has been deployed to https://polar-lake-13037.herokuapp.com/ (${process.env.AS_COMMIT}) by\n ${process.env.AS_AUTHOR} and build took total of ${process.env.AS_TOOK}.`
                 : `New version has not been deployed (${process.env.AS_COMMIT}), because there was problem with building project by\n ${process.env.AS_AUTHOR}. Build took total of ${process.env.AS_TOOK}.`
               }]
