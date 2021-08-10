@@ -5,7 +5,7 @@ on:
     - cron: '*/5 * * * *'
 
 jobs:
-  URL health check action:
+  url_health_check_action:
     runs-on: ubuntu-18.04
     steps:
       - name: Check the deployed service URL
